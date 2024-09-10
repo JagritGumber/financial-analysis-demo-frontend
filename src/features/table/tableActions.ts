@@ -6,7 +6,7 @@ const fetchTable = createAsyncThunk(
   "table/fetchTable",
   async (_, { fulfillWithValue, rejectWithValue }) => {
     try {
-      const res = getTableData();
+      const res = await getTableData();
 
       if (!Array.isArray(res)) {
         return rejectWithValue(

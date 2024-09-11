@@ -1,8 +1,9 @@
 import { CellProps, TableItem } from "@/types";
 import { ColoredCell, ColoredPercentageCell } from "../Cell";
 import { BasicHeader, BrokenHeader, DividedHeader } from "../Header";
+import { MRT_ColumnDef } from "material-react-table";
 
-const getColumns = (maxSigmaRiskValue: number) => [
+const getColumns = (maxSigmaRiskValue: number): MRT_ColumnDef<TableItem>[] => [
   {
     header: "Strike",
     accessorKey: "strike",
@@ -15,6 +16,20 @@ const getColumns = (maxSigmaRiskValue: number) => [
     size: 130,
     Header: <BrokenHeader value="% In/Out Money" />,
     filterSelectOptions: ["In", "Out"],
+    filterVariant: "select",
+    filterFn: (rows, id, filterValue) => {
+      const mainRows = rows.getAllCells();
+      for (const row of mainRows) {
+        if (row.column.id === "percent_in_out_money") {
+          if ((row.getValue() as number) >= 0 && filterValue === "In")
+            return true;
+          if ((row.getValue() as number) < 0 && filterValue === "Out")
+            return true;
+          else return false;
+        }
+      }
+      return false;
+    },
     Cell: ColoredCell,
   },
   {
@@ -106,4 +121,4 @@ const getColumns = (maxSigmaRiskValue: number) => [
   },
 ];
 
-export { getColumns }
+export { getColumns };

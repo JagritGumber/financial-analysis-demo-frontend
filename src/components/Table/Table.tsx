@@ -68,6 +68,9 @@ const Table: React.FC<Readonly<TableProps>> = ({ data }): JSX.Element => {
           "& .MuiFormControl-root": {
             minWidth: 0,
           },
+          "& .MuiFormControl-root .MuiInputBase-root": {
+            color: "#fff",
+          },
         },
       },
       // Style resetting for custom components and addition of borders

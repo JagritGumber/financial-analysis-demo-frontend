@@ -97,7 +97,7 @@ const Table: React.FC<Readonly<TableProps>> = ({ data }): JSX.Element => {
   });
   return (
     <div className="relative overflow-hidden">
-      <h3 className="absolute z-10 w-3/4 select-none text-lg font-semibold sm:w-full sm:py-4 md:text-xl lg:py-2 lg:text-2xl">
+      <h3 className="absolute z-10 w-3/4 select-none text-lg font-semibold sm:w-5/6 sm:py-4 md:text-xl lg:py-2 lg:text-2xl">
         Apple Inc. (AAPL) &nbsp; $214.29 &nbsp;
         <span className="text-[#962121]">($-2.38) -1.1%</span>
       </h3>
